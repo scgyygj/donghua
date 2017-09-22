@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	
+	</style>
+</head>
+<style>
+	.cil{
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		background: rgb(233,0,244);
+		position: absolute;
+		top: 50%;
+		left: 50%;
+	}
+</style>
+<body>
+
+    <script>
+	    //在页面中随机插入（大小。颜色。位置）的插入20个元素。
+	    //num 个数
+	    //max min  圆大小的范围
+	   function random(num,max,min){
+	   for(let i=0;i<num;i++){
+	   	let divs=document.createElement('div');
+	   	divs.className='cil';
+	   	//定位
+	   	divs.style.left=Math.floor((window.innerWidth-100)*Math.random())+'px';
+	   	divs.style.top=Math.floor((window.innerHeight-100)*Math.random())+'px';
+	   	divs.style.width=Math.floor((max-min)*Math.random()+min)+'px';
+	   	divs.style.height=divs.style.width;
+        let one=Math.round(255*Math.random());
+        let two=Math.round(255*Math.random());
+        let treen=Math.floor(255*Math.random());
+        divs.style.background='rgb('+one+','+two+','+treen+')';
+        let bodys=document.querySelector('body');
+	   	 bodys.appendChild(divs);
+	   
+	   }
+	}
+	random(30,200,50);
+	</script>
+
+</body>
+</html>

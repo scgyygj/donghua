@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div class="box">
+      这是最外层
+	<ul class="items">
+	这是第二层第一个
+		<li><img src="" alt=""><img src="" alt=""></li>
+		<li><img src="" alt=""><img src="" alt=""></li>
+		<li><img src="" alt=""><img src="" alt=""></li>
+	</ul>
+	<div class="box1">
+		这是第二层第二个
+	</div>
+	<div >
+		这是第二层第三个
+	</div>
+</div>
+	<script>
+	 
+
+
+	  
+	  // let boxAll=box.childNodes;
+	  // let boxs=Array.from(boxAll);
+
+	  ///////////////
+	  // 用childNodes模拟children，先选中所有子元素，再选出元素节点。
+	  // 方法一：
+	  // 	let nowarr=[];
+	  // for (let i=0;i<boxAll.length;i++){
+
+	  // 	if(boxAll[i].nodeType==1){
+   //         nowarr.push(boxAll[i]);
+	  // 	}
+	  	
+	  // }
+	  // console.log(nowarr);
+	  
+	  // let boxs=Array.prototype.forEach.call(box,function(){
+
+	  	
+	  // })
+	  // 方法二：
+	  // function children(parent){
+	  // 	let newarr=[];
+	  //   parent.forEach( elements=>{
+	  //   	if(elements.nodeType==1){
+	  //   		newarr.push(elements);
+	  //   	}
+	  //   })
+	  //   return newarr;
+	  // }
+	  // console.log(children(boxs));
+       //方法三：
+	  // function children1(parent){
+	  // 	let newarr=[];
+	  // 	let childs=parent.childNodes;
+	  // 	let arrs=Array.from(childs);
+	  //   newarr=arrs.filter(elements=>elements.nodeType==1);
+	  // 	return newarr;
+	  // }
+	  // console.log(children1(box));
+      
+      // childrena
+
+      //1.父元素->child 所有子元素->截取  
+      //closed    离他最进的父元素的标签   while
+      //for循环 找它同级的子元素下一个和tagname相同的
+        // function next(element,tagneme){
+        // 	let parent=element.parentNode;
+        // 	let childs=parent.children;
+        // 	let index=0;
+        // 	for(let i=0;i<childs.length;i++){
+        // 		if(childs[i]==element){
+        // 			index=i;
+        // 			break;
+        // 		}
+        // 	}
+        //     let slices=Array.from(childs).slice(index+1);
+            
+        //     for (let i=0;i<slices.length;i++){
+        //     	if(slices[i].nodeName==tagneme.toUpperCase()){
+        //              return slices[i];
+        //     	}
+        //     }
+        //     return null;
+         
+        // }
+
+
+
+        //while循环 找它同级的子元素下一个和tagname相同的
+        function nextW(element,tagname){
+        	let nextS=element.nextElementsibling;
+        	if(nextS==null){
+        		return null;
+        	}
+        	while(nextS.nextElementsibling!=tagname){
+        		
+        		if(nextS==null){
+        		return null;
+        	   }
+        	   nextS=nextS.nextElementsibling;
+               if(nextS.nextElementsibling==tagname){
+               	return nextS;
+               }
+             
+        	}
+        }
+
+
+
+
+
+
+
+
+
+        let box=document.querySelector('.box1');
+        console.log(box);
+        console.log(nextW(box,'div'));
+
+	</script>
+</body>
+</html>

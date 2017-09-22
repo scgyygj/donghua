@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.cil{
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background: rgb(233,0,244);
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transition: all 3s; 
+	}
+	.pointor{
+		width: 1px;
+		height: 1px;
+		background: red;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+	}
+</style>
+<body>
+<div class="pointor">
+	
+</div>
+	<script>
+	// num 圆的个数   
+	// r  定位圆的大小
+	
+		function radio(num,r){
+             let deg=360/num*(num*Math.random());
+			 for(let i=0;i<num;i++){
+			 	if(i%50==0){
+			 		r+=50;
+			 	}
+			 	//角度随机
+			 	// let deg=360/num;
+			 	// *(Math.floor(50*Math.random()+i));
+			 	
+			 	
+			 	let rad=deg*i*Math.PI/180;
+	   	let divs=document.createElement('div');
+	   	divs.className='cil';
+	   	
+	    //随机色      
+        let one=Math.round(255*Math.random());
+        let two=Math.round(255*Math.random());
+        let treen=Math.floor(255*Math.random());
+        divs.style.background='rgb('+one+','+two+','+treen+')';
+
+
+        divs.style.transitionDelay=i*50+'ms';
+     //    divs.style.width=Math.floor((max-min)*Math.random()+min)+'px';
+	   	// divs.style.height=divs.style.width;
+        setTimeout(function(){
+        divs.style.left=Math.floor(r*Math.cos(rad))+'px';
+	   	divs.style.top=Math.floor(r*Math.sin(rad))+'px';
+        },10)
+        let div=document.querySelector('.pointor');
+        
+	   	 div.appendChild(divs);
+	   
+	   }
+		}
+		radio(300,100);
+	</script>
+</body>
+</html>
